@@ -5,10 +5,10 @@ if (isset($_POST['nom'])) {
 			include_once ('./Class/membre_class.php');
 			//include_once('bd-connect.php');
 			$member = new Membre();
-			$member -> setNom($_POST['nom']);
-			$member -> setPw($_POST['pw']);
-			$member -> setEmail($_POST['email']);
-			$member -> insertDB();
+			$member->setNom($_POST['nom']);
+			$member->setPw($_POST['pw']);
+			$member->setEmail($_POST['email']);
+			$member->insertDB();
 
 		};
 	};
