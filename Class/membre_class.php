@@ -76,7 +76,8 @@ class Membre {
 		$result -> execute(array(
 			'nom' => $nom,
 			'pw' => $pw,
-			'email' => $email));
+			'email' => $email
+			));
 
 		$result -> closeCursor();
 	}
