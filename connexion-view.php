@@ -35,11 +35,6 @@
 			</div>
 		</div>
 	</form>
-<<<<<<< HEAD
-	<p>changes</p>
-=======
-	<p>hello</p>
->>>>>>> origin/master
 
 
 	<script src="js/vendor/jquery.min.js"></script>
