@@ -5,11 +5,17 @@ if (isset($_POST['nom'])) {
 			if (isset($_POST{'email'})) {
 				include_once ('./Class/membre_class.php');
 				$member = new Membre();
-				$member->setNom($_POST['nom']);
-				$member->setPrenom($_POST['prenom']);
-				$member->setPw($_POST['pw']);
-				$member->setEmail($_POST['email']);
-				$member->insertDB();
+				if ($member->verifEmail($_POST['email'])) {
+					$member->setNom($_POST['nom']);
+					$member->setPrenom($_POST['prenom']);
+					$member->setPw($_POST['pw']);
+					$member->setEmail($_POST['email']);
+					$member->insertDB();
+					header('Location: connexion-view.php');
+				} else {
+					echo 'Mail déjà utilisé';
+				}
+				
 			}
 		}
 	}

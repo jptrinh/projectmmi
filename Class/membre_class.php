@@ -1,9 +1,9 @@
 <?php
 class Membre {
-	private $id;
+
+	private $email;
 	private $nom;
 	private $prenom;
-	private $email;
 	private $pw;
 
 	public function __construct() {
@@ -68,9 +68,29 @@ class Membre {
 	}
 
 	public function setEmail($email) {
-		$this->email = htmlspecialchars($email);
+			$this->email = htmlspecialchars($email);	
 	}
 
+	public function verifEmail($email) {
+		try {
+			$bdd = new PDO('mysql:host=localhost;dbname=projectmmi;charset=utf8', 'root', '');
+		}
+		catch (Exception $e) {
+			die('Erreur : ' . $e->getMessage());
+		}
+
+		$result = $bdd->prepare("SELECT email FROM members WHERE email = :email");
+		$result->execute(array(
+			'email' => $email));
+
+		$res = $result->fetch();
+
+		if (!$res) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
 
 	public function insertDB() {		
 		
@@ -80,9 +100,8 @@ class Membre {
 		catch (Exception $e) {
 			die('Erreur : ' . $e->getMessage());
 		}
-
-		$result = $bdd->prepare("INSERT INTO members (nom, prenom, pw, email) VALUES (:nom, :prenom, :pw, :email)");
-		$result->execute(array(
+			$result = $bdd->prepare("INSERT INTO members (nom, prenom, pw, email) VALUES (:nom, :prenom, :pw, :email)");
+			$result->execute(array(
 			'nom' => $this->nom,
 			'prenom' => $this->prenom,
 			'pw' => $this->pw,
@@ -100,7 +119,7 @@ class Membre {
 			die('Erreur : ' . $e->getMessage());
 		}
 
-		$result = $bdd->prepare("SELECT id FROM members WHERE email = :email AND pw = :pw");
+		$result = $bdd->prepare("SELECT email FROM members WHERE email = :email AND pw = :pw");
 		$result->execute(array(
 			'email' => $this->email,
 			'pw' => $this->pw));
