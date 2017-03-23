@@ -13,7 +13,7 @@
 		<div class="medium-6 columns">
 			<h2>Se connecter</h2>
 			<form action="connect.php" method="post">
-					<label for="pseudo">Pseudo : <input type="text" name="pseudo" id="pseudo"></label>
+					<label for="emailco">Email : <input type="text" name="emailco" id="emailco"></label>
 					<label for="pwco">Mot de passe : <input type="password" name="pwco" id="pwco"></label>
 					<button type="submit" class="button primary">Se connecter</button>
 			</form>
@@ -23,6 +23,7 @@
 			<h2>S'inscrire</h2>
 			<form action="inscription.php" method="post">
 					<label for="nom">Nom : <input type="text" name="nom" id="nom" required></label>
+					<label for="nom">Prénom : <input type="text" name="prenom" id="prenom" required></label>
 					<label for="pw">Mot de passe : <input type="password" name="pw" id="pw" required></label>
 					<label for="email">Email : <input type="email" name="email" id="email" required></label>
 					<input type="submit" class="button primary" value="S'inscrire"/>
