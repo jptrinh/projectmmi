@@ -14,7 +14,7 @@ class Membre {
 	}
 
 //CONSTRUCT
-	/*public function __construct($id) {
+	/*public function __construct($email) {
 		try {
 			$bdd = new PDO('mysql:host=localhost;dbname=projectmmi;charset=utf8', 'root', '');
 		}
@@ -22,11 +22,15 @@ class Membre {
 			die('Erreur : ' . $e->getMessage());
 		}
 
-		$result = $bdd->prepare("SELECT * FROM members WHERE id = :id");
+		$result = $bdd->prepare("SELECT * FROM members WHERE email = :email");
 		$result->execute(array(
-			'id' => $id));
+			'email' => $email));
 
-		$this->nom = 
+		$res = $result->fetch();
+
+		$this->nom = $res['nom'],
+		$this->prenom = $res['prenom'],
+		$this->email = $res['email'],
 
 	}*/
 
@@ -71,6 +75,7 @@ class Membre {
 			$this->email = htmlspecialchars($email);	
 	}
 
+	//VERIFICATION EMAIL
 	public function verifEmail($email) {
 		try {
 			$bdd = new PDO('mysql:host=localhost;dbname=projectmmi;charset=utf8', 'root', '');
@@ -92,6 +97,7 @@ class Membre {
 		}
 	}
 
+	//ADD MEMBER
 	public function insertDB() {		
 		
 		try {
@@ -111,6 +117,7 @@ class Membre {
 		$result->closeCursor();
 	}
 
+	//CONNECTION
 	public function connectMember() {
 		try {
 			$bdd = new PDO('mysql:host=localhost;dbname=projectmmi;charset=utf8', 'root', '');
@@ -119,21 +126,19 @@ class Membre {
 			die('Erreur : ' . $e->getMessage());
 		}
 
-		$result = $bdd->prepare("SELECT email FROM members WHERE email = :email AND pw = :pw");
+		$result = $bdd->prepare("SELECT email, nom, prenom FROM members WHERE email = :email AND pw = :pw");
 		$result->execute(array(
 			'email' => $this->email,
 			'pw' => $this->pw));
 
-		$res = $result->fetch();
-
+		$res = $result->fetch(PDO::FETCH_ASSOC);
 		if (!$res) {
 			echo "Mauvais identifiants";
 		} else {
 			session_start();
-			$_SESSION['id'] = $res['id'];
+			$_SESSION['nom'] = $res['nom'];
+			$_SESSION['prenom'] = $res['prenom'];
 			$_SESSION['email'] = $res['email'];
-			echo $_SESSION['id'];
-			echo "Connecté";
 		}
 	}
 
