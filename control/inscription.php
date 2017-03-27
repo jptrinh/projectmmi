@@ -10,6 +10,7 @@ if (isset($_POST['nom'])) {
 					$member->setPrenom($_POST['prenom']);
 					$member->setPw($_POST['pw']);
 					$member->setEmail($_POST['email']);
+                    $member->setIut($_POST['iut']);
 					$member->insertDB();
 					header('Location: ../view/index.php');
 				} else {

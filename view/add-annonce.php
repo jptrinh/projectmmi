@@ -27,7 +27,7 @@
     <label for="projet">Choisir un projet
         <select name="projet" id="projet">
             <?php while ($donnees = $result->fetch()):?>
-            <option value="<?=$donnees['nom']?>"><?=$donnees['nom']?></option>
+            <option value="<?=$donnees['nomProjet']?>"><?=$donnees['nomProjet']?></option>
             <?php endwhile ?>
         </select>
     </label>

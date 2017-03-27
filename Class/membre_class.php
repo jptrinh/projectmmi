@@ -5,12 +5,14 @@ class Membre {
 	private $nom;
 	private $prenom;
 	private $pw;
+    private $iut;
 
 	public function __construct() {
 		$this->nom = '';
 		$this->prenom = '';
 		$this->email = '';
 		$this->pw = '';
+        $this->iut = '';
 	}
 
 //CONSTRUCT
@@ -55,6 +57,10 @@ class Membre {
 	public function getEmail() {
 		return $this->email;
 	}
+    
+    public function getIut() {
+		return $this->iut;
+	}
 
 
 //SETTERS
@@ -73,6 +79,10 @@ class Membre {
 
 	public function setEmail($email) {
 			$this->email = htmlspecialchars($email);	
+	}
+    
+    public function setIut($iut) {
+			$this->iut = htmlspecialchars($iut);	
 	}
 
 	//VERIFICATION EMAIL
@@ -106,12 +116,13 @@ class Membre {
 		catch (Exception $e) {
 			die('Erreur : ' . $e->getMessage());
 		}
-			$result = $bdd->prepare("INSERT INTO members (nom, prenom, pw, email) VALUES (:nom, :prenom, :pw, :email)");
+			$result = $bdd->prepare("INSERT INTO members (nom, prenom, pw, email, iut) VALUES (:nom, :prenom, :pw, :email, :iut)");
 			$result->execute(array(
 			'nom' => $this->nom,
 			'prenom' => $this->prenom,
 			'pw' => $this->pw,
-			'email' => $this->email
+			'email' => $this->email,
+            'iut' => $this->iut,
 			));
 
 		$result->closeCursor();
@@ -126,7 +137,7 @@ class Membre {
 			die('Erreur : ' . $e->getMessage());
 		}
 
-		$result = $bdd->prepare("SELECT email, nom, prenom FROM members WHERE email = :email AND pw = :pw");
+		$result = $bdd->prepare("SELECT email, nom, prenom, nomIut FROM members, iut WHERE email = :email AND pw = :pw AND iut.id=members.iut");
 		$result->execute(array(
 			'email' => $this->email,
 			'pw' => $this->pw));
@@ -139,6 +150,7 @@ class Membre {
 			$_SESSION['nom'] = $res['nom'];
 			$_SESSION['prenom'] = $res['prenom'];
 			$_SESSION['email'] = $res['email'];
+            $_SESSION['iut'] = $res['nomIut'];
 		}
 	}
 

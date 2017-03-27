@@ -46,8 +46,8 @@ class Annonce {
         $this->chef = $chef;
     }
     
-    public function setPublication($publication) {
-        $this->publication = $publication;
+    public function setPublication() {
+        $this->publication = date("Y/m/d");
     }
     
     public function setDescription($description) {

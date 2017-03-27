@@ -30,6 +30,17 @@
 				<label for="nom">Prénom : <input type="text" name="prenom" id="prenom" required></label>
 				<label for="pw">Mot de passe : <input type="password" name="pw" id="pw" required></label>
 				<label for="email">Email : <input type="email" name="email" id="email" required></label>
+				
+                   
+                <?php require_once('../model/liste-iut.php')?>
+                <label for="iut">IUT
+                    <select name="iut" id="iut">
+                        <?php while($donnees = $result->fetch()):?>
+                        <option value="<?=$donnees['id']?>"><?=$donnees['nomIut']?></option>
+                        <?php endwhile ?>
+                    </select>
+				    
+				</label>
 				<input type="submit" class="button primary" value="S'inscrire"/>
 			</form>
 		</div>

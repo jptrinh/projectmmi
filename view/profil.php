@@ -13,6 +13,7 @@
 	<?php include_once ('menu.php'); ?>
         
 	<h1 class="text-center"><?=$_SESSION['prenom'] . " " . $_SESSION['nom']; ?></h1>
+	<h3 class="text-center"><?=$_SESSION['iut']?></h3>
 	
    <?php include_once('../model/liste-projet.php');?>
    
@@ -21,7 +22,7 @@
         <?php while ($donnees = $result->fetch()):?>
             <div class="column column-block" style="border: 1px solid black;">
                 <p>
-                    <a data-open="projet<?=$donnees['id']?>"><?=$donnees['nom']?></a>
+                    <a data-open="projet<?=$donnees['id']?>"><?=ucfirst($donnees['nomProjet'])?></a>
                     <span class="label"><?=$donnees['type']?></span>
                 </p>
                 
@@ -33,7 +34,7 @@
             <div class="reveal" id="projet<?=$donnees['id']?>" data-reveal>
                
                 <button class="close-button" data-close aria-label="Close modal" type="button"> <span aria-hidden="true">&times;</span> </button>
-                <h1><?=$donnees['nom']?></h1>
+                <h1><?=$donnees['nomProjet']?></h1>
                 <p><?=$donnees['description']?></p> 
                 
             </div>

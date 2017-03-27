@@ -6,5 +6,5 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
-$result = $bdd->prepare("SELECT * FROM annonces, members, projets WHERE annonces.chef=members.email AND annonces.projet=projets.nomProjet");
+$result = $bdd->prepare("SELECT * FROM iut");
 $result->execute();

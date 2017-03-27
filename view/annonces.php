@@ -9,8 +9,8 @@
 </head>
 <body>
 	<?php include_once('menu.php');?>
-<h1>Annonces</h1>
-<p><a href="../control/add-annonce-page.php">Ajouter une annonce</a></p>
+<h1>Annonces<small><a href="../control/add-annonce-page.php" class="button primary-button">+</a></small></h1>
+
 	<?php require('../model/liste-annonce.php')?>
 	<div class="row medium-up-3">
 	    <?php while($annonces = $result->fetch()): ?>
@@ -22,7 +22,11 @@
 	                <?=$annonces['prenom'] . ' ' . $annonces['nom'];?>
 	            </p>
 	            <p>
-	                <?=$annonces['projet']?>
+	                <?=$annonces['projet']?><span class="label"><?=$annonces['type']?></span>
+	            </p>
+	            
+	            <p>
+	                <?php include('../model/temps-annonce.php');?> 
 	            </p>
 	            
 	        </div>

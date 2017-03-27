@@ -8,7 +8,8 @@ if (isset($_POST['poste'])) {
             $annonce->setPoste($_POST['poste']);
             $annonce->setProjet($_POST{'projet'});
             $annonce->setChef($_SESSION['email']);
-            $annonce->setPublication(date('Y-m-d'));
+            $annonce->setPublication();
+            $date = $annonce->getPublication();
             $annonce->setDescription($_POST['description']);
             $annonce->insertAnnonce();
             header('Location:annonces.php');
