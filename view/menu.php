@@ -1,6 +1,6 @@
 <ul class="dropdown menu align-right" data-dropdown-menu>
 	<li>
-       <a href="../control/profil.php"><?php echo $_SESSION["prenom"] . " " . $_SESSION["nom"]; ?> </a>
+       <a href="../control/profil.php"><?=$_SESSION["prenom"] . " " . $_SESSION["nom"]?> </a>
         <ul class="menu">
             <li><a href="../control/disconnect.php">Déconnection</a></li>
         </ul>

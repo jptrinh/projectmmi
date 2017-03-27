@@ -6,9 +6,5 @@ catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
 }
 
-$result = $bdd->prepare('SELECT * FROM projets WHERE chef = :chef');
-$result->execute(array(
-    'chef' => $_SESSION['email']));
-
-
-
+$result = $bdd->prepare("SELECT * FROM annonces, members WHERE chef=email");
+$result->execute();

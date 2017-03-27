@@ -5,6 +5,7 @@ if(isset($_POST['nom'])) {
         include_once ('../Class/projet_class.php');
         $projet = new Projet();
         $projet->setNom($_POST['nom']);
+        $projet->setType($_POST['type']);
         $projet->setDescription($_POST['description']);
         $projet->setChef($_SESSION['email']);
         $projet->insertProjet();

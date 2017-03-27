@@ -17,7 +17,7 @@
 	<div class="tabs-content" data-tabs-content="identification-tabs">
 		<div class="tabs-panel is-active" id="connexion">
 			<form action="../control/connect.php" method="post">
-				<label for="emailco">Email : <input type="text" name="emailco" id="emailco"></label>
+				<label for="emailco">Email : <input type="email" name="emailco" id="emailco"></label>
 				<label for="pwco">Mot de passe : <input type="password" name="pwco" id="pwco"></label>
 				<button type="submit" class="button primary">Se connecter</button>
 			</form>

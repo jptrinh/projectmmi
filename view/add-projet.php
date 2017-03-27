@@ -14,6 +14,15 @@
 
 	<form action="../control/add-projet.php" method="post">
 		<label for="nom">Nom du projet<input type="text" name="nom" id="nom"></label>
+		<label for="type">Type de projet
+		    <select name="type" id="type">
+		        <option value="website">Website</option>
+		        <option value="photography">Photography</option>
+		        <option value="animation">Animation</option>
+		        <option value="musique">Musique</option>
+		        <option value="communication">Communication</option>
+		    </select>
+		</label>
 		<label for="description">Description<textarea name="description" id="description" placeholder="Decrire le projet"></textarea></label>
 		<button type="submit" class="button primary">Ajouter</button>
 	</form>

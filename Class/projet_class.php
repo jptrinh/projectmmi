@@ -3,6 +3,7 @@ class Projet {
 
 	private $id;
 	private $nom;
+    private $type;
 	private $description;
 	private $chef;
 
@@ -15,6 +16,10 @@ class Projet {
 
 	public function getNom() {
 		return $this->nom;
+	}
+    
+    public function getType() {
+		return $this->type;
 	}
 
 	public function getDescription() {
@@ -33,6 +38,10 @@ class Projet {
 
 	public function setNom($nom) {
 		$this->nom = $nom;
+	}
+    
+    public function setType($type) {
+		$this->type = $type;
 	}
 
 	public function setDescription($description) {
@@ -53,9 +62,10 @@ class Projet {
 			die('Erreur : ' . $e->getMessage());
 		}
         
-        $result = $bdd->prepare("INSERT INTO projets (nom, description, chef) VALUES (:nom, :description, :chef)");
+        $result = $bdd->prepare("INSERT INTO projets (nom, type, description, chef) VALUES (:nom, :type, :description, :chef)");
         $result->execute(array(
 			'nom' => $this->nom,
+            'type' => $this->type,
 			'description' => $this->description,
 			'chef' => $this->chef
 			));
