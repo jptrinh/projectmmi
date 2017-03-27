@@ -16,11 +16,15 @@
 	    <?php while($annonces = $result->fetch()): ?>
 	        <div class="column column-block" style="border: 1px solid black;">
 	            <p>
-                    <a data-open="annonce<?=$annonces["id"]?>"><?=$annonces["poste"]?></a>
+                    <a data-open="annonce<?=$annonces["id"]?>"><?=ucfirst($annonces["poste"])?></a>
 	            </p>
 	            <p>
 	                <?=$annonces['prenom'] . ' ' . $annonces['nom'];?>
 	            </p>
+	            <p>
+	                <?=$annonces['projet']?>
+	            </p>
+	            
 	        </div>
 	        <?php endwhile ?>
 	</div>
