@@ -6,28 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>project mmi</title>
 	<link rel="stylesheet" href="../css/foundation.css" />
+	<link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
 	<?php include_once('menu.php');?>
-<h1>Annonces<small><a href="../control/add-annonce-page.php" class="button primary-button">+</a></small></h1>
+	<div class="row">
+        <h1>Liste des annonces    <a href="../control/add-annonce-page.php" title="Ajouter une annonce"><?php echo file_get_contents("../ressources/addannonce.svg");?></a></h1>
+	    
+	</div>
+
 
 	<?php require('../model/liste-annonce.php')?>
-	<div class="row medium-up-3">
+	<div class="row small-up-1 medium-up-2 large-up-3">
 	    <?php while($annonces = $result->fetch()): ?>
-	        <div class="column column-block" style="border: 1px solid black;">
-	            <p>
-                    <a data-open="annonce<?=$annonces["id"]?>"><?=ucfirst($annonces["poste"])?></a>
-	            </p>
-	            <p>
-	                <?=$annonces['prenom'] . ' ' . $annonces['nom'];?>
-	            </p>
-	            <p>
-	                <?=$annonces['projet']?><span class="label"><?=$annonces['type']?></span>
-	            </p>
+	        <div class="column column-block">
+	            <div class="annonce">
+                    <p>
+                        <a class="poste" data-open="annonce<?=$annonces["id"]?>"><?=ucfirst($annonces["poste"])?></a>
+                        <?php include("../model/type-annonce.php")?>
+                        <span class="float-right label <?=$type?>"><?=$type?></span>
+                    </p>
+
+                    <p>
+                        <?=$annonces['prenom'] . ' ' . $annonces['nom'];?>
+                    </p>
+                    <p>
+                        <?=$annonces['projet']?><small> / <?=$annonces['type']?></small>
+
+                        <span class="float-right">
+                        <?php echo file_get_contents("../ressources/time.svg");?>
+                        <?php include('../model/temps-annonce.php');?> 
+                        </span>
+                    </p>
+                </div>
 	            
-	            <p>
-	                <?php include('../model/temps-annonce.php');?> 
-	            </p>
+	            
 	            
 	        </div>
 	        <?php endwhile ?>

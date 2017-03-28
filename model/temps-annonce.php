@@ -10,5 +10,4 @@ if ($interval->format('%d jours')=='0 jours') {
 else {
     echo $interval->format('%d jours');
 }
-
 ?>
