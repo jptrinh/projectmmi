@@ -6,9 +6,14 @@ h1 {
     color: #4F4F4F;
 }
 
-.has-tip {
-    border-bottom: none;
+.addannonce{
+    background-color: dimgrey;
+    color: white;
+    border-radius: 15px;
+    width: 25px;
+    height: 25px;
 }
+
 .column-block p {
     line-height: 1.5em;
     margin-bottom: 0;

@@ -11,10 +11,7 @@
 <body>
 	<?php include_once('menu.php');?>
 	<div class="row">
-        <h1>Liste des annonces    
-            
-            <span data-tooltip aria-haspopup="true" class="has-tip right" data-disable-hover="false" data-click-open="false" tabindex="2" title="Ajouter une annonce"><a href="../control/add-annonce-page.php"><?php echo file_get_contents("../ressources/addannonce.svg");?></a></span>
-        </h1>
+        <h1>Liste des annonces    <a href="../control/add-annonce-page.php" title="Ajouter une annonce"><?php echo file_get_contents("../ressources/addannonce.svg");?></a></h1>
 	    
 	</div>
 
